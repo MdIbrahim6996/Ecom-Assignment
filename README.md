@@ -1,4 +1,4 @@
-<h1 align="center">Linkedin Clone ✨</h1>
+<h1 align="center">Ecommerce Assignment ✨</h1>
 
 ![Demo App](/client/public/screenshot.png)
 
