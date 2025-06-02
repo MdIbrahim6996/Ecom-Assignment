@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useAuth } from "../../../contexts/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
+import { SERVER_URL } from "../../../utils/constants";
 
 const Header = () => {
     const { authUser, setAuthUser } = useAuth();
@@ -8,9 +9,7 @@ const Header = () => {
 
     const handleLogout = async () => {
         localStorage.removeItem("authUser");
-        const { data } = await axios.get(
-            `http://localhost:4000/api/v1/auth/logout`
-        );
+        const { data } = await axios.get(`${SERVER_URL}/api/v1/auth/logout`);
         setAuthUser(null);
         navigate("/login");
     };

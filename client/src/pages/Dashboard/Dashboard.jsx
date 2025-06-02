@@ -6,6 +6,7 @@ import useModal from "../../hooks/useModal";
 import EditModal from "../../components/EditModal";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
+import { SERVER_URL } from "../../utils/constants";
 
 const Dashboard = () => {
     const navigate = useNavigate();
@@ -17,9 +18,7 @@ const Dashboard = () => {
 
     const fetchProducts = async () => {
         try {
-            const { data } = await axios.get(
-                "http://localhost:4000/api/v1/product"
-            );
+            const { data } = await axios.get(`${SERVER_URL}/api/v1/product`);
             setProducts(data);
         } catch (error) {
             console.log(error);
@@ -31,9 +30,7 @@ const Dashboard = () => {
 
     const handleLogout = async () => {
         localStorage.removeItem("authUser");
-        const { data } = await axios.get(
-            `http://localhost:4000/api/v1/auth/logout`
-        );
+        const { data } = await axios.get(`${SERVER_URL}/api/v1/auth/logout`);
         setAuthUser(null);
         navigate("/login");
     };
