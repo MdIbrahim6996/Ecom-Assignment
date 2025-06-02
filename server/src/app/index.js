@@ -22,15 +22,15 @@ app.use(express.json({ limit: "5mb" }));
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/product", productRouter);
 app.use("/api/v1/payment", paymentRouter);
-console.log(path.join(path.resolve(), "../client/dist"));
+console.log(path.join(path.resolve(), "client/dist"));
 
 if (process.env.NODE_ENV === "production") {
     // Serve front-end app for all unmatched routes
-    app.use(express.static(path.join(path.resolve(), "../client/dist")));
+    app.use(express.static(path.join(path.resolve(), "client", "dist")));
 
     app.get("/{*any}", (req, res) => {
         res.sendFile(
-            path.resolve(path.resolve(), "../client/dist", "index.html")
+            path.resolve(path.resolve(), "client", "dist", "index.html")
         );
     });
 }
